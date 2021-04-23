@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 
 function App() {
-  const [headingText, setHeadingText] = useState("Hello");
+  //const [headingText, setHeadingText] = useState("Hello");
   const [background, setBackground] = useState("#FFF");
   const [isMousedOver, setMouseOver] = useState(false);
   const [name, setName] = useState("");
+  const [submission, setSubmission] = useState("");
 
   function handleClick() {
-    setHeadingText("Submitted");
+    //setHeadingText("Submitted");
+    setSubmission(name);
   }
 
   function mouseOut() {
@@ -28,9 +30,7 @@ function App() {
 
   return (
     <div className="container">
-      <h1>
-        {headingText} {name}
-      </h1>
+      <h1>Hello {submission}</h1>
       <input
         onChange={handleChange}
         type="text"
