@@ -7,9 +7,10 @@ function App() {
   const [name, setName] = useState("");
   const [submission, setSubmission] = useState("");
 
-  function handleClick() {
+  function handleClick(event) {
     //setHeadingText("Submitted");
     setSubmission(name);
+    event.preventDefault();
   }
 
   function mouseOut() {
@@ -31,23 +32,25 @@ function App() {
   return (
     <div className="container">
       <h1>Hello {submission}</h1>
-      <input
-        onChange={handleChange}
-        type="text"
-        placeholder="What's your name?"
-        value={name}
-      />
-      <button
-        style={{
-          backgroundColor: background,
-          color: isMousedOver ? "#50a3a2" : "#600"
-        }}
-        onClick={handleClick}
-        onMouseOut={mouseOut}
-        onMouseOver={mouseOver}
-      >
-        Submit
-      </button>
+      <form onSubmit={handleClick}>
+        <input
+          onChange={handleChange}
+          type="text"
+          placeholder="What's your name?"
+          value={name}
+        />
+        <button
+          type="submit"
+          style={{
+            backgroundColor: background,
+            color: isMousedOver ? "#50a3a2" : "#600"
+          }}
+          onMouseOut={mouseOut}
+          onMouseOver={mouseOver}
+        >
+          Submit
+        </button>
+      </form>
     </div>
   );
 }
